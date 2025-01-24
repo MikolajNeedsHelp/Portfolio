@@ -33,13 +33,13 @@
 //   );
 // }
 
-
 "use client";
 
 import { Geist, Geist_Mono } from "next/font/google";
 import { HeroUIProvider } from "@heroui/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import "./globals.css";
+import { Providers } from "./provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,11 +61,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <HeroUIProvider>
-          <NextThemesProvider attribute="class" defaultTheme="light">
-            {children}
-          </NextThemesProvider>
-        </HeroUIProvider>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
